@@ -5,17 +5,33 @@ const Topbar = () => {
     window.print();
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     if (navigator.share) {
-      navigator.share({
-        title: 'My Resume',
-        text: 'Check out my professional resume',
-        url: window.location.href,
-      });
+      try {
+        await navigator.share({
+          title: 'My Resume',
+          text: 'Check out my professional resume',
+          url: window.location.href,
+        });
+      } catch (error) {
+        // If sharing fails (permission denied, user cancellation, etc.), fall back to clipboard
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          alert('Link copied to clipboard!');
+        } catch (clipboardError) {
+          console.error('Failed to copy to clipboard:', clipboardError);
+          alert('Unable to share or copy link. Please copy the URL manually.');
+        }
+      }
     } else {
       // Fallback: copy URL to clipboard
-      navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      } catch (error) {
+        console.error('Failed to copy to clipboard:', error);
+        alert('Unable to copy link. Please copy the URL manually.');
+      }
     }
   };
 
