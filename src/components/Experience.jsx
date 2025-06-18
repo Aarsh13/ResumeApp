@@ -1,16 +1,16 @@
 import React from 'react';
 
 const Experience = ({ data, index, onUpdate, onRemove }) => (
-  <div className="space-y-3 p-4 border border-gray-200 rounded-lg">
+  <div className="space-y-3 p-4 border border-gray-200 rounded-xl bg-gradient-to-r from-green-50 to-blue-50 hover:shadow-md transition-shadow">
     <div className="flex justify-between items-start">
       <div className="flex-1 space-y-3">
         {/* Position Title input */}
         <input
           type="text"
-          placeholder="Position Title"
+          placeholder="Job Title (e.g., Senior Software Engineer)"
           value={data.title}
           onChange={(e) => onUpdate(index, 'title', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-gray-300"
+          className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent font-semibold"
         />
 
         {/* Company Name input */}
@@ -19,7 +19,7 @@ const Experience = ({ data, index, onUpdate, onRemove }) => (
           placeholder="Company Name"
           value={data.company}
           onChange={(e) => onUpdate(index, 'company', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-gray-300"
+          className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
 
         {/* Start and End date inputs */}
@@ -29,24 +29,24 @@ const Experience = ({ data, index, onUpdate, onRemove }) => (
             placeholder="Start Date (MM/YYYY)"
             value={data.startDate}
             onChange={(e) => onUpdate(index, 'startDate', e.target.value)}
-            className="w-1/2 px-3 py-2 border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-gray-300"
+            className="w-1/2 px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
           <input
             type="text"
-            placeholder="End Date (MM/YYYY)"
+            placeholder="End Date (MM/YYYY or Present)"
             value={data.endDate}
             onChange={(e) => onUpdate(index, 'endDate', e.target.value)}
-            className="w-1/2 px-3 py-2 border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-gray-300"
+            className="w-1/2 px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
 
         {/* Description textarea */}
         <textarea
-          placeholder="Describe your role, responsibilities, and achievements."
+          placeholder="• Describe your key responsibilities and achievements&#10;• Use bullet points for better readability&#10;• Include quantifiable results when possible"
           value={data.description}
           onChange={(e) => onUpdate(index, 'description', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-gray-300 resize-none"
-          rows="3"
+          className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+          rows="4"
         />
       </div>
 
@@ -54,7 +54,7 @@ const Experience = ({ data, index, onUpdate, onRemove }) => (
       {index >= 0 && (
         <button
           onClick={() => onRemove(index)}
-          className="ml-2 p-1 text-gray-700 hover:text-gray-950"
+          className="ml-3 p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
